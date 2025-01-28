@@ -25,6 +25,7 @@ export class StudentTableComponent implements OnChanges {
     'lastName',
     'email',
     'phone',
+    'branch',
     'gender',
     'address',
     'termsConditions',

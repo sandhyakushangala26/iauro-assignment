@@ -1,7 +1,7 @@
 .students-form-details {
   display: flex;
   justify-content: center;
-  
+
   .form-container {
     background-color: #d5baff;
     display: flex;
@@ -16,6 +16,26 @@
       width: 80%;
       display: flex;
       flex-direction: column;
+    }
+
+    .radio-text {
+      color: black;
+    }
+
+    .box {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    button[mat-flat-button] {
+      background-color: rgb(57, 8, 55);
+      color: white;
+      cursor: pointer;
+    }
+
+    .terms-check {
+      color: red;
     }
   }
 }

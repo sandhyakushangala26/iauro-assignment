@@ -12,7 +12,7 @@
         <input
           type="text"
           matInput
-          placeholder="Enter Name..."
+          placeholder="Enter your first name..."
           class="input-field"
           formControlName="firstName"
         />
@@ -50,54 +50,53 @@
         <input
           type="tel"
           matInput
-          placeholder="123-456-7890"
+          placeholder="1234567890"
           formControlName="phone"
         />
       </mat-form-field>
     </div>
-    <!-- 
-    <div class="form-fields">
-        <mat-label>Date of Birth</mat-label>
-<mat-form-field>
-  <input matInput [matDatepicker]="picker" formControlName="dob">
-  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker></mat-datepicker>
-</mat-form-field>
-
-    </div> -->
 
     <div class="form-fields">
       <mat-label>Gender</mat-label>
       <mat-radio-group formControlName="gender">
-        <mat-radio-button value="Female">Female</mat-radio-button>
-        <mat-radio-button value="Male">Male</mat-radio-button>
+        <mat-radio-button value="Male">
+          <span class="radio-text">Male</span></mat-radio-button
+        >
+        <mat-radio-button value="Female"
+          ><span class="radio-text">Female</span></mat-radio-button
+        >
       </mat-radio-group>
     </div>
 
-    <!-- <div class="form-fields">
-      <mat-label>
-        Favorite Subject
-      </mat-label> -->
-    <!-- <mat-form-field> -->
-    <!-- <input type="text" placeholder="select or search" matInput [matAutocomplete]="auto" -->
-    <!-- formControlName="subject"> -->
-    <!-- <mat-autocomplete #auto="matAutocomplete">
-          @for (option of filteredSubjects | async; track option) {
-          <mat-option [value]="option">{{option}}</mat-option>
+    <div class="form-fields">
+      <mat-label> Branch </mat-label>
+      <mat-form-field>
+        <input
+          type="text"
+          placeholder="select or search"
+          matInput
+          [matAutocomplete]="auto"
+          formControlName="branch"
+        />
+        <mat-autocomplete #auto="matAutocomplete">
+          @for (option of filteredBranch | async; track option) {
+          <mat-option [value]="option">{{ option }}</mat-option>
           }
-        </mat-autocomplete> -->
-    <!-- </mat-form-field> -->
-    <!-- </div> -->
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
 
     <div class="form-fields">
       <mat-label>Address</mat-label>
       <textarea name="" id="" rows="3" formControlName="address"></textarea>
     </div>
 
-    <div class="form-fields">
-      <mat-checkbox formControlName="termsConditions"
-        >Accept Terms and Conditions</mat-checkbox
-      >
+    <div class="form-fields box">
+      <mat-checkbox
+        formControlName="termsConditions"
+        class="terms-check"
+      ></mat-checkbox>
+      <span class="term-check">Accept Terms and Conditions</span>
     </div>
     <section>
       <button

@@ -3,6 +3,7 @@ export interface IStudentFormDetails {
   firstName: string;
   lastName?: string;
   email: string;
+  branch:any;
   phone: string;
   address: string;
   gender: string;
@@ -16,6 +17,7 @@ export const studentsSampleData: IStudentFormDetails[] = [
       lastName: 'Rani',
       gender: 'Female',
       email: 'sandhya@gmail.com',
+      branch:'CSE',
       phone: '12346899',
       address: 'xyz sydbg ',
       termsConditions: true,
@@ -26,6 +28,7 @@ export const studentsSampleData: IStudentFormDetails[] = [
       lastName: 'Surest',
       gender: 'Female',
       email: 'bhuvana@gmail.com',
+      branch:'ECE',
       phone: '12346899',
       address: 'xyz sydbg ',
       termsConditions: true,
@@ -36,16 +39,7 @@ export const studentsSampleData: IStudentFormDetails[] = [
       lastName: 'Nangi',
       gender: 'Female',
       email: 'pooja@gmail.com',
-      phone: '12346899',
-      address: 'xyz sydbg ',
-      termsConditions: true,
-    },
-    {
-      rollNumber: 4,
-      firstName: 'Vinitha',
-      lastName: 'Sara',
-      gender: 'Female',
-      email: 'vinitha@gmail.com',
+      branch:'CIVIL',
       phone: '12346899',
       address: 'xyz sydbg ',
       termsConditions: true,

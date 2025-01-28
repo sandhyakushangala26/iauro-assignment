@@ -1,6 +1,6 @@
 <div class="container">
   <app-student-details-form (submitStudent)="addStudent($event)"></app-student-details-form>
-  <div class="table-container" *ngIf="students.length">
+  <div class="table-container" *ngIf="students?.length">
     <h2 class="text-heading">Student Details</h2>
     <app-student-table
       [students]="students"
