@@ -1,8 +1,12 @@
-
-    <app-student-details-form (submitStudent)="addStudent($event)"></app-student-details-form>
-
-<app-student-table *ngIf="students.length;"
-  [students]="students"
-  (editStudentEvent)="editStudent($event)"
-  (deleteStudentRecordEvent)="deleteStudent($event)">
-</app-student-table>
+<div class="container">
+  <app-student-details-form (submitStudent)="addStudent($event)"></app-student-details-form>
+  <div class="table-container" *ngIf="students.length">
+    <h2 class="text-heading">Student Details</h2>
+    <app-student-table
+      [students]="students"
+      (editStudentEvent)="editStudent($event)"
+      (deleteStudentRecordEvent)="deleteStudent($event)"
+      >></app-student-table
+    >
+  </div>
+</div>

@@ -99,14 +99,13 @@
         >Accept Terms and Conditions</mat-checkbox
       >
     </div>
-
     <section>
-      <!-- <button mat-flat-button (click)="submitStudentForm()" [disabled]="!studentForm.valid">{{isEdit ? 'Update':'Submit'}}</button> -->
       <button
         mat-flat-button
-        (click)="submitForm()"
+        (click)="submitStudentForm()"
+        [disabled]="!studentForm.valid"
       >
-        Submit
+        {{ isStudentFormEditing ? "Update" : "Submit" }}
       </button>
     </section>
   </form>

@@ -3,12 +3,15 @@ import {
   Component,
   EventEmitter,
   Input,
+  OnChanges,
+  OnInit,
   Output,
   SimpleChanges,
 } from '@angular/core';
 import { MatDialogModule, MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { DeleteConfirmationDialogComponent } from '../delete-confirmation-dialog/delete-confirmation-dialog.component';
+import { IStudentFormDetails } from '../model-interface/student-model';
 
 @Component({
   selector: 'app-student-table',
@@ -16,7 +19,7 @@ import { DeleteConfirmationDialogComponent } from '../delete-confirmation-dialog
   templateUrl: './student-table.component.html',
   styleUrl: './student-table.component.scss',
 })
-export class StudentTableComponent {
+export class StudentTableComponent implements OnChanges {
   displayedColumns: string[] = [
     'firstName',
     'lastName',
@@ -26,14 +29,14 @@ export class StudentTableComponent {
     'address',
     'termsConditions',
   ];
-  @Input() students!: any;
+  @Input() students!: IStudentFormDetails[];
   @Output() editStudentEvent = new EventEmitter();
   @Output() deleteStudentRecordEvent = new EventEmitter();
   dataSource: any;
   afterDeleteList: any;
   constructor(private dialog: MatDialog) {}
 
-  ngOnInit(): void {
+  ngOnChanges(data: SimpleChanges) {
     this.dataSource = new MatTableDataSource(this.students.flat());
   }
 
@@ -49,10 +52,10 @@ export class StudentTableComponent {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.afterDeleteList = this.students.filter(
+        this.students = this.students.filter(
           (ele: any) => ele.rollNumber !== studentInfo.rollNumber
         );
-        this.deleteStudentRecordEvent.next([...this.afterDeleteList]);
+        this.deleteStudentRecordEvent.next([...this.students]);
       }
     });
   }

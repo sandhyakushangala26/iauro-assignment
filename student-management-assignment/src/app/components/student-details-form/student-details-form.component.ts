@@ -30,7 +30,6 @@ export class StudentDetailsFormComponent implements OnInit{
   studentForm!:FormGroup;
   studentDetails!:IStudentFormDetails[]
   editStudentDetail!:IStudentFormDetails;
-
   isStudentFormEditing:boolean=false;
   @Output() submitStudent = new EventEmitter<any>();
   @ViewChild('studentFormRef') studentFormElement!: ElementRef;
@@ -49,63 +48,39 @@ export class StudentDetailsFormComponent implements OnInit{
 }
 
 ngOnInit(): void {
-  // this.studentDetails = studentsSampleData;
   this.studentDetails = studentsSampleData.flat(Infinity);
   console.log(this.studentDetails,'total fetched data')
-
 }
 
-// submitForm() {
-//   // if (this.studentForm.valid) {
-//     const studentData = {
-//       rollNumber:!this.isStudentFormEditing ? this.studentDetails.length + 1 : this.editStudentDetail.rollNumber,
+submitStudentForm() {
+  const newStudent:IStudentFormDetails = {
+    rollNumber: !this.isStudentFormEditing ? this.studentDetails.length + 1 : this.editStudentDetail.rollNumber,
+    firstName: this.firstName.value,
+    lastName: this.lastName.value,
+    gender: this.gender.value,
+    termsConditions: this.termsConditions.value,
+    phone: this.phone.value,
+    email: this.email.value,
+    address:this.address.value
+  }
 
-//       ...this.studentForm.value,
+!this.isStudentFormEditing && this.studentDetails.push(newStudent);
 
-//     };
-//     console.log(studentData)
-//     this.studentForm.reset();
-//   // }
-
-  
-//   // !this.isStudentFormEditing && this.studentDetails.push(studentData);
-//   if(this.isStudentFormEditing) {
-//     const index = this.studentDetails.findIndex((student:any) => student.rollNumber === this.editStudentDetail.rollNumber);
-//     if(index !== -1) {
-//       this.studentDetails[index]=studentData;
-//     }
-//   }
-//   else{
-//     this.studentDetails.push(studentData);
-//   }
-//   this.submitStudent.emit(...this.studentDetails);
-//   this.studentForm.reset();
-//   this.isStudentFormEditing = false
-// }
-submitForm() {
-  // if (this.studentForm.valid) {
-    const studentData = {
-      rollNumber: !this.isStudentFormEditing ? this.studentDetails.length + 1 : this.editStudentDetail.rollNumber,
-      ...this.studentForm.value,
-    };
-    console.log(studentData);
-    
-    if (this.isStudentFormEditing) {
-      const index = this.studentDetails.findIndex((student: any) => student.rollNumber === this.editStudentDetail.rollNumber);
-      if (index !== -1) {
-        this.studentDetails[index] = studentData;
-      }
-    } else {
-      this.studentDetails.push(studentData);
-    }
-
-    this.submitStudent.emit(this.studentDetails);  // Emit the updated student list correctly
-    this.studentForm.reset();
-    this.isStudentFormEditing = false;
-  // }
+if(this.isStudentFormEditing) {
+  const index = this.studentDetails.findIndex((student:IStudentFormDetails) => student.rollNumber === this.editStudentDetail.rollNumber);
+  if(index !== -1) {
+    this.studentDetails[index]=newStudent;
+  }
+}
+this.submitStudent.emit([...this.studentDetails]);
+this.studentForm.reset();
+this.isStudentFormEditing = false
 }
 
-
+scrollToForm():void {
+  this.isStudentFormEditing = true;
+  this.studentFormElement.nativeElement.scrollIntoView({behavior:'smooth'});
+}
 
 patchFormData(data:any) {
   this.editStudentDetail = data;
