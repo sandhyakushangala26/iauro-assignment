@@ -1,0 +1,21 @@
+.students-form-details {
+  display: flex;
+  justify-content: center;
+  
+  .form-container {
+    background-color: #d5baff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40rem;
+    gap: 16px;
+    border-radius: 8px;
+    padding: 8px;
+
+    .form-fields {
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

@@ -1,0 +1,113 @@
+<div class="students-form-details">
+  <form
+    action=""
+    class="form-container"
+    [formGroup]="studentForm"
+    #studentFormRef
+  >
+    <h2>Student Form Details</h2>
+    <div class="form-fields">
+      <mat-label>First Name</mat-label>
+      <mat-form-field>
+        <input
+          type="text"
+          matInput
+          placeholder="Enter Name..."
+          class="input-field"
+          formControlName="firstName"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="form-fields">
+      <mat-label>Last Name</mat-label>
+      <mat-form-field>
+        <input
+          type="text"
+          matInput
+          placeholder="Enter your last name..."
+          class="input-field"
+          formControlName="lastName"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="form-fields">
+      <mat-label>Email Address</mat-label>
+      <mat-form-field>
+        <input
+          type="email"
+          matInput
+          placeholder="example@domain.com"
+          formControlName="email"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="form-fields">
+      <mat-label>Phone Number</mat-label>
+      <mat-form-field>
+        <input
+          type="tel"
+          matInput
+          placeholder="123-456-7890"
+          formControlName="phone"
+        />
+      </mat-form-field>
+    </div>
+    <!-- 
+    <div class="form-fields">
+        <mat-label>Date of Birth</mat-label>
+<mat-form-field>
+  <input matInput [matDatepicker]="picker" formControlName="dob">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
+    </div> -->
+
+    <div class="form-fields">
+      <mat-label>Gender</mat-label>
+      <mat-radio-group formControlName="gender">
+        <mat-radio-button value="Female">Female</mat-radio-button>
+        <mat-radio-button value="Male">Male</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <!-- <div class="form-fields">
+      <mat-label>
+        Favorite Subject
+      </mat-label> -->
+    <!-- <mat-form-field> -->
+    <!-- <input type="text" placeholder="select or search" matInput [matAutocomplete]="auto" -->
+    <!-- formControlName="subject"> -->
+    <!-- <mat-autocomplete #auto="matAutocomplete">
+          @for (option of filteredSubjects | async; track option) {
+          <mat-option [value]="option">{{option}}</mat-option>
+          }
+        </mat-autocomplete> -->
+    <!-- </mat-form-field> -->
+    <!-- </div> -->
+
+    <div class="form-fields">
+      <mat-label>Address</mat-label>
+      <textarea name="" id="" rows="3" formControlName="address"></textarea>
+    </div>
+
+    <div class="form-fields">
+      <mat-checkbox formControlName="termsConditions"
+        >Accept Terms and Conditions</mat-checkbox
+      >
+    </div>
+
+    <section>
+      <!-- <button mat-flat-button (click)="submitStudentForm()" [disabled]="!studentForm.valid">{{isEdit ? 'Update':'Submit'}}</button> -->
+      <button
+        mat-flat-button
+        (click)="submitForm()"
+      >
+        Submit
+      </button>
+    </section>
+  </form>
+</div>
